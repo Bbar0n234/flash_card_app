@@ -8,14 +8,11 @@ class RunConfig(BaseModel):
     port: int = 9998
 
 
-class ApiV1RouterConfig(BaseModel):
-    prefix: str = "/v1" #
-    users: str = "/users"
-    tasks: str = "/tasks"
-
-
 class ApiRouterConfig(BaseModel):
     prefix: str = "/api"
+    users: str = "/users"
+    cards: str = "/cards"
+    learning_progress: str = "learning_progress"
 
 
 class DataBaseConfig(BaseModel):
@@ -38,7 +35,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file="../.env",
 
-        env_prefix="APP_CONFIG__", # 
+        env_prefix="APP_CONFIG__",
         case_sensitive=False,
         env_nested_delimiter='__',
         extra="ignore"
@@ -46,7 +43,6 @@ class Settings(BaseSettings):
     )
     run: RunConfig = RunConfig()
     api: ApiRouterConfig = ApiRouterConfig()
-    api_v1: ApiV1RouterConfig = ApiV1RouterConfig()
     db: DataBaseConfig
 
 

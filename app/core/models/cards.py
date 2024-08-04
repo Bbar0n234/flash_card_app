@@ -1,10 +1,9 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
-
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .base import Base
 
 
-class Card(Base):
+class Cards(Base):
     __tablename__ = 'cards'
     id = Column(Integer, primary_key=True, index=True)
     english = Column(String, index=True)
