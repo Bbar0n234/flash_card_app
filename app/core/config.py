@@ -12,6 +12,8 @@ class ApiRouterConfig(BaseModel):
     prefix: str = "/api"
     users: str = "/users"
     cards: str = "/cards"
+    categories: str = "/categories"
+    difficulties: str = "/difficulties"
     learning_progress: str = "learning_progress"
 
 

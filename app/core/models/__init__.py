@@ -3,11 +3,15 @@ __all__ = (
     "Base",
     "Users",
     "Cards",
-    "LearningProgress"
+    "Categories",
+    "UserCard",
+    "UserCardAnswers"
 )
 
 from .db_helper import db_helper
 from .base import Base
 from .users import Users
 from .cards import Cards
-from .learning_progress import LearningProgress
+from .categories import Categories
+from .user_card import UserCard
+from .user_card_answers import UserCardAnswers

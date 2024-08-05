@@ -4,16 +4,16 @@ from typing import Optional
 class CardBase(BaseModel):
     english: str
     russian: str
+    category_id: Optional[int] = None
+    difficulty: Optional[int] = None
 
 class CardRead(CardBase):
     id: int
-    category: Optional[str] = None
-    difficulty: Optional[str] = None
+    category_id: Optional[int] = None
+    difficulty: Optional[int] = None
 
 class CardCreate(CardBase):
-    category: Optional[str] = None
-    difficulty: Optional[str] = None
+    pass
 
 class CardUpdate(CardBase):
-    category: Optional[str] = None
-    difficulty: Optional[str] = None
+    pass

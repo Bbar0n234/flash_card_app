@@ -1,11 +1,17 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import relationship, Mapped, mapped_column
+
+from typing import List
+
 from .base import Base
+
 
 class Users(Base):
     __tablename__ = 'users'
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    username: Mapped[str] = mapped_column(String, unique=True, index=True)
-    email: Mapped[str] = mapped_column(String, unique=True, index=True)
-    password: Mapped[str] = mapped_column(String)
-    learning_progress: Mapped[list["LearningProgress"]] = relationship('LearningProgress', back_populates='user')
+    
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    username: Mapped[str] = mapped_column(String(50), unique=True, index=True, nullable=False)
+    email: Mapped[str] = mapped_column(String(100), unique=True, index=True, nullable=False)
+    password: Mapped[str] = mapped_column(String(100), nullable=False)
+
+    user_card = relationship('UserCard', back_populates='user')
