@@ -1,16 +1,32 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
 from api import router as api_router
+from core.auth import main_router as auth_router
 
 from core import settings
+from core.models import db_helper
+
 
 import uvicorn
 
 
-main_app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    yield
+    # Shutdown
+    await db_helper.dispose()
+
+
+main_app = FastAPI(lifespan=lifespan)
 
 main_app.include_router(
     router=api_router,
+)
+
+main_app.include_router(
+    router=auth_router,
 )
 
 

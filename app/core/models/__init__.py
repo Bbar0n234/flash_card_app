@@ -5,7 +5,8 @@ __all__ = (
     "Cards",
     "Categories",
     "UserCard",
-    "UserCardAnswers"
+    "Answers",
+    "Role"
 )
 
 from .db_helper import db_helper
@@ -14,4 +15,5 @@ from .users import Users
 from .cards import Cards
 from .categories import Categories
 from .user_card import UserCard
-from .user_card_answers import UserCardAnswers
+from .answers import Answers
+from .role import Role

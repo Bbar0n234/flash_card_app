@@ -3,8 +3,11 @@ from sqlalchemy.ext.asyncio import (
     AsyncEngine,
     async_sessionmaker
 )
+from sqlalchemy.sql import text
 
 from core import settings
+
+from .base import Base
 
 
 class DatabaseHelper:
@@ -46,3 +49,4 @@ db_helper = DatabaseHelper(
     pool_size=settings.db.pool_size,
     max_overflow=settings.db.max_overflow,
 )
+

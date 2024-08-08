@@ -8,13 +8,20 @@ class RunConfig(BaseModel):
     port: int = 9998
 
 
+class AuthConfig(BaseModel):
+    secret_auth: str = "SECRET"
+    prefix: str = "/auth"
+
+
 class ApiRouterConfig(BaseModel):
     prefix: str = "/api"
     users: str = "/users"
     cards: str = "/cards"
     categories: str = "/categories"
     difficulties: str = "/difficulties"
-    learning_progress: str = "learning_progress"
+    learning_progress: str = "/learning_progress"
+    user_card: str = "/user_card"
+    answers: str = "/answers"
 
 
 class DataBaseConfig(BaseModel):
@@ -46,6 +53,7 @@ class Settings(BaseSettings):
     run: RunConfig = RunConfig()
     api: ApiRouterConfig = ApiRouterConfig()
     db: DataBaseConfig
+    auth: AuthConfig = AuthConfig()
 
 
 settings = Settings()
